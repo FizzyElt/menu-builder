@@ -1,16 +1,32 @@
 import { useRoutes, RouteObject } from 'react-router-dom';
 
+import Home from '~/pages/Home';
+
 import Menus from '~/pages/Menus';
+import CategoriesBoard from './pages/Menus/Categories';
+
 import Categories from './pages/Categories';
 import Items from './pages/Items';
 import Selections from './pages/Selections';
 
 const routes: Array<RouteObject> = [
-  { path: '', element: 'home' },
+  { path: '', element: <Home /> },
   {
-    path: 'menus',
+    path: 'overview',
     element: <Menus />,
-    children: [{ path: ':menuId', element: 'menu' }],
+    children: [
+      {
+        path: ':menuId',
+        element: <CategoriesBoard />,
+        children: [
+          {
+            path: ':categoryId',
+            element: 'category',
+            children: [{ path: ':itemId', element: 'item' }],
+          },
+        ],
+      },
+    ],
   },
   {
     path: 'items',

@@ -1,3 +1,11 @@
+import { Outlet } from 'react-router-dom';
+import CategoryBoard from './components/CategoryBoard';
+
 export default function Categories() {
-  return <></>;
+  return (
+    <>
+      <CategoryBoard />
+      <Outlet />
+    </>
+  );
 }

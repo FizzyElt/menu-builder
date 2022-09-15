@@ -1,13 +1,13 @@
 import { Box, HStack } from '@chakra-ui/react';
 import MenuBoard from './components/MenuBoard';
-import CategoryBoard from './components/CategoryBoard';
+import { Outlet } from 'react-router-dom';
 
 export default function Menus() {
   return (
     <Box h="100vh">
       <HStack align="flex-start" h="100%">
         <MenuBoard />
-        <CategoryBoard />
+        <Outlet />
       </HStack>
     </Box>
   );

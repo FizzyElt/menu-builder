@@ -3,9 +3,11 @@ import { append, pipe, assoc, propEq, not, compose, identity, ifElse, always } f
 
 import { Menu } from '~/type';
 
-interface MenuStore {
+export interface MenuStore {
   menus: Array<Menu>;
   createMenu: (menu: Menu) => void;
+  deleteMenu: (menuId: string) => void;
+  updateMenu: (menu: Menu) => void;
 }
 
 const useMenuStore = create<MenuStore>((set) => ({
