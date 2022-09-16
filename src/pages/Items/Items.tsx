@@ -12,7 +12,6 @@ import {
   useDisclosure,
   HStack,
   Square,
-  StatNumber,
 } from '@chakra-ui/react';
 import { AddIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
 
@@ -65,9 +64,9 @@ export default function Items() {
   return (
     <>
       <Box>
-        <Container maxW="30rem">
+        <Container maxW="30rem" py={6}>
           <VStack align="stretch">
-            <Flex align="center">
+            <Flex align="center" px={4}>
               <Heading fontSize="lg">Items</Heading>
               <Spacer />
               <IconButton
