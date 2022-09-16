@@ -63,7 +63,7 @@ export default function MenuFormModal({
               </FormControl>
             )}
             rules={{
-              required: 'Name can not be empty',
+              required: { value: true, message: 'Name can not be empty' },
             }}
           />
         </ModalBody>

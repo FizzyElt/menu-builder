@@ -1,3 +1,4 @@
-import Menus from './Menus';
+import Menus from './Menus'
 
-export default Menus;
+
+export default Menus
