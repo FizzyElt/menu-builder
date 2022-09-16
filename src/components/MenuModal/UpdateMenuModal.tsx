@@ -6,7 +6,5 @@ interface UpdateMenuModalProps extends MenuFormModalProps {
 }
 
 export default function UpdateMenuModal({ menu, ...props }: UpdateMenuModalProps) {
-  return (
-    <MenuFormModal {...props} defaultFormValues={menu && { name: menu.name || '' }}></MenuFormModal>
-  );
+  return <MenuFormModal {...props} defaultFormValues={menu && { name: menu.name }}></MenuFormModal>;
 }

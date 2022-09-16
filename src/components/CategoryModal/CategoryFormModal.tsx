@@ -3,39 +3,38 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
+  ModalCloseButton,
   ModalHeader,
   ModalBody,
-  ModalCloseButton,
   ModalFooter,
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   Input,
   ModalProps,
+  FormErrorMessage,
 } from '@chakra-ui/react';
-
 import { useForm, Controller } from 'react-hook-form';
 
-export type EditMenuForm = {
+export type EditCategoryForm = {
   name: string;
 };
 
-const defaultForm: EditMenuForm = {
+const defaultForm: EditCategoryForm = {
   name: '',
 };
 
-export interface MenuFormModalProps extends Omit<ModalProps, 'children'> {
-  defaultFormValues?: EditMenuForm;
-  onSubmit?: (data: EditMenuForm) => void;
+export interface CategoryFormModalProps extends Omit<ModalProps, 'children'> {
+  defaultFormValues?: EditCategoryForm;
+  onSubmit?: (data: EditCategoryForm) => void;
 }
 
-export default function MenuFormModal({
+export default function CategoryFormModal({
   defaultFormValues = defaultForm,
   onSubmit = () => {},
   ...props
-}: MenuFormModalProps) {
-  const { handleSubmit, control, reset } = useForm<EditMenuForm>({
+}: CategoryFormModalProps) {
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: defaultFormValues,
   });
 
@@ -46,11 +45,11 @@ export default function MenuFormModal({
   }, [props.isOpen]);
 
   return (
-    <Modal size="sm" isCentered {...props}>
+    <Modal size="md" isCentered {...props}>
       <ModalOverlay />
       <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
         <ModalCloseButton />
-        <ModalHeader>Menu</ModalHeader>
+        <ModalHeader>Category</ModalHeader>
         <ModalBody>
           <Controller
             control={control}
@@ -68,7 +67,7 @@ export default function MenuFormModal({
           />
         </ModalBody>
         <ModalFooter>
-          <Button type="submit" w="full" colorScheme="blue">
+          <Button type="submit" colorScheme="blue" w="full">
             Submit
           </Button>
         </ModalFooter>

@@ -45,9 +45,8 @@ export default function Menus() {
     if (!menu) return;
 
     updateMenu({
-      id: menu.id || '',
+      ...menu,
       name: data.name,
-      categories: menu.categories,
     });
     updateModalDisclosure.onClose();
   };
