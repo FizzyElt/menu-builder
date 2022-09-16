@@ -14,8 +14,8 @@ export type Item = {
   id: string;
   name: string;
   description: string;
-  selections: Array<Selection>;
   price: number;
+  selections: Array<Selection>;
 };
 
 export type Selection = {

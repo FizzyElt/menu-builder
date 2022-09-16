@@ -10,7 +10,7 @@ export interface ItemStore {
   updateItem: (item: Item) => void;
 }
 
-const useItems = create<ItemStore>((set) => ({
+const useItemStore = create<ItemStore>((set) => ({
   items: [],
   createItem: (item: Item) => set((state) => ({ items: append(item, state.items) })),
   deleteItem: (itemId: string) =>
@@ -25,4 +25,4 @@ const useItems = create<ItemStore>((set) => ({
     })),
 }));
 
-export default useItems;
+export default useItemStore;
