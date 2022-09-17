@@ -5,10 +5,10 @@ Menu 建製系統
 ### features
 
 - Overview
-  - [ ] Menu Board
-  - [ ] Category Board
-  - [ ] Item Board
-  - [ ] Selection Board
+  - [X] Menu Board
+  - [X] Category Board
+  - [X] Item Board
+  - [X] Selection Board
 - Menus
   - [X] Create Menu
   - [X] Update Menu
