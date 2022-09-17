@@ -1,5 +1,7 @@
 import create from 'zustand';
-import { append, compose, not, propEq, ifElse, always, identity, equals } from 'ramda';
+import { append, compose, not, propEq, ifElse, always, identity, equals, times } from 'ramda';
+
+import { v4 as uuid } from 'uuid';
 
 import { Category } from '~/type';
 
@@ -9,6 +11,7 @@ export interface CategoryStore {
   deleteCategory: (categoryId: string) => void;
   updateCategory: (category: Category) => void;
   removeItem: (itemId: string) => void;
+  generateCategories: (amount: number) => void;
 }
 
 const useCategoryStore = create<CategoryStore>((set) => ({
@@ -39,6 +42,11 @@ const useCategoryStore = create<CategoryStore>((set) => ({
         ...category,
         items: category.items.filter(compose(not, equals(id))),
       })),
+    })),
+
+  generateCategories: (amount: number) =>
+    set(() => ({
+      categories: times((index) => ({ id: uuid(), name: `Category ${index}`, items: [] }), amount),
     })),
 }));
 

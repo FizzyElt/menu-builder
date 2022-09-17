@@ -1,5 +1,7 @@
 import create from 'zustand';
-import { append, compose, not, propEq, ifElse, always, identity } from 'ramda';
+import { append, compose, not, propEq, ifElse, always, identity, times } from 'ramda';
+
+import { v4 as uuid } from 'uuid';
 
 import { Item } from '~/type';
 
@@ -8,6 +10,7 @@ export interface ItemStore {
   createItem: (item: Item) => void;
   deleteItem: (itemId: string) => void;
   updateItem: (item: Item) => void;
+  generateItems: (amount: number) => void;
 }
 
 const useItemStore = create<ItemStore>((set) => ({
@@ -21,6 +24,20 @@ const useItemStore = create<ItemStore>((set) => ({
     set((state) => ({
       items: state.items.map(
         ifElse<[Item], Item, Item>(propEq('id', item.id), always(item), identity)
+      ),
+    })),
+
+  generateItems: (amount: number) =>
+    set(() => ({
+      items: times(
+        (index) => ({
+          id: uuid(),
+          name: `item ${index}`,
+          price: 1,
+          description: `item ${index} description`,
+          selections: [],
+        }),
+        amount
       ),
     })),
 }));

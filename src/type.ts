@@ -15,7 +15,7 @@ export type Item = {
   name: string;
   description: string;
   price: number;
-  selections: Array<Selection>;
+  selections: Array<string>;
 };
 
 export type Selection = {

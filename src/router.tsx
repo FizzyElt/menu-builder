@@ -4,6 +4,8 @@ import Home from '~/pages/Home';
 
 import Overview from '~/pages/Overview';
 import CategoriesBoard from '~/pages/Overview/Categories';
+import ItemsBoard from '~/pages/Overview/Items';
+import SelectionBoard from './pages/Overview/Selections';
 
 import Menus from '~/pages/Menus';
 import Categories from './pages/Categories';
@@ -22,8 +24,8 @@ const routes: Array<RouteObject> = [
         children: [
           {
             path: ':categoryId',
-            element: 'category',
-            children: [{ path: ':itemId', element: 'item' }],
+            element: <ItemsBoard />,
+            children: [{ path: ':itemId', element: <SelectionBoard /> }],
           },
         ],
       },

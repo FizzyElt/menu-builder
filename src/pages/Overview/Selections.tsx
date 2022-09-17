@@ -1,1 +1,5 @@
-export default function Selections() {}
+import SelectionBoard from './components/SelectionBoard';
+
+export default function Selections() {
+  return <SelectionBoard />;
+}

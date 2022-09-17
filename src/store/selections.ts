@@ -1,5 +1,7 @@
 import create from 'zustand';
-import { compose, append, propEq, ifElse, identity, always, not } from 'ramda';
+import { compose, append, propEq, ifElse, identity, always, not, times } from 'ramda';
+
+import { v4 as uuid } from 'uuid';
 
 import { Selection } from '~/type';
 
@@ -8,6 +10,7 @@ export interface SelectionStore {
   createSelection: (selection: Selection) => void;
   deleteSelection: (selectionId: string) => void;
   updateSelection: (selection: Selection) => void;
+  generateSelections: (amount: number) => void;
 }
 
 const useSelectionStore = create<SelectionStore>((set) => ({
@@ -26,6 +29,14 @@ const useSelectionStore = create<SelectionStore>((set) => ({
           always(selection),
           identity
         )
+      ),
+    })),
+
+  generateSelections: (amount: number) =>
+    set(() => ({
+      selections: times(
+        (index) => ({ id: uuid(), name: `selection ${index}`, options: [] }),
+        amount
       ),
     })),
 }));
